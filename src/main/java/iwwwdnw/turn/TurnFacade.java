@@ -16,7 +16,6 @@ public class TurnFacade implements TurnFactory, ITurn {
 	private StateMachine stateMachine;
 	private Player currentplayer = null;
 	private Position position = null;
-	private Figure selectedFigure = null;
 	private Player opponent = null;
 
 	@Override
@@ -53,13 +52,7 @@ public class TurnFacade implements TurnFactory, ITurn {
 	}
 
 	@Override
-	public synchronized void chooseFigureToMove(Figure figure) {
-		if (this.stateMachine.getState().isSubStateOf( S.CHOOSE_FIGURE_TO_MOVE  ))
-			this.turn.chooseFigureToMove(figure);
-	}
-
-	@Override
-	public synchronized void moveFigure(Position position) {
+	public synchronized void moveFigure(Figure figure, Position position) {
 		if (this.stateMachine.getState().isSubStateOf( S.MOVE_FIGURE  ))
 			this.turn.moveFigure(position);
 	}

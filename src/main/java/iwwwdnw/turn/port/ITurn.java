@@ -14,9 +14,7 @@ public interface ITurn {
 
 	public void chooseStartField(Position position);
 
-	public void chooseFigureToMove(Figure figure);
-
-	public void moveFigure(Position position);
+	public void moveFigure(Figure figure, Position position);
 
 	public void duel(Player opponent);
 
