@@ -1,5 +1,6 @@
 package iwwwdnw.turn.port;
 
+import iwwwdnw.domain.port.Field;
 import iwwwdnw.domain.port.Figure;
 import iwwwdnw.domain.port.Player;
 import iwwwdnw.domain.port.Position;
@@ -8,16 +9,10 @@ public interface ITurn {
 	
 	void sysop();
 
-	public void rollDice();
+	public void rollDice(Player player);
 
-	public void checkDiceSum();
+	public void chooseStartField(Figure figure, int fieldId);
 
-	public void chooseStartField(Position position);
-
-	public void moveFigure(Figure figure, Position position);
-
-	public void duel(Player opponent);
-
-	public void checkRemainingDicesum();
+	public void moveFigure(Figure figure, int fieldId);
 
 }

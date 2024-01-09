@@ -22,17 +22,11 @@ public interface State {
 
 		AWARD_CEREMMONY,
 
-		INTERPRET_DICESUM,
-
 		CHOOSE_STARTFIELD,
-
-		CHOOSE_FIGURE_TO_MOVE,
 
 		MOVE_FIGURE,
 
-		DUEL,
-
-		CHECK_REMAINING_DICESUM;
+		DUEL;
 
 		private List<State> subStates;
 

@@ -8,8 +8,8 @@ public interface Field {
 	
 	int getId();
 	
-	boolean isStartField();
-	boolean isJoinField();
+	boolean isStartField(); // One of the two starting fields
+	boolean isJoinField(); // Bridges
 	
 	/* 
 	 * Each field has a unique successor and a unique predecessor. 

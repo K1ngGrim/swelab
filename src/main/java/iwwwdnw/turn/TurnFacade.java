@@ -1,6 +1,7 @@
 package iwwwdnw.turn;
 
 import iwwwdnw.domain.DomainFactory;
+import iwwwdnw.domain.port.Field;
 import iwwwdnw.domain.port.Figure;
 import iwwwdnw.domain.port.Player;
 import iwwwdnw.domain.port.Position;
@@ -34,38 +35,22 @@ public class TurnFacade implements TurnFactory, ITurn {
 	}
 
 	@Override
-	public synchronized void rollDice() {
+	public synchronized void rollDice(Player player) {
 		if (this.stateMachine.getState().isSubStateOf( S.ROLL_DICE  ))
-			this.turn.rollDice();
+			this.turn.rollDice(currentplayer);
 	}
 
 	@Override
-	public synchronized void checkDiceSum() {
-		if (this.stateMachine.getState().isSubStateOf( S.INTERPRET_DICESUM  ))
-			this.turn.checkDiceSum();
-	}
-
-	@Override
-	public synchronized void chooseStartField(Position position) {
+	public synchronized void chooseStartField(Figure figure, int fieldId) {
 		if (this.stateMachine.getState().isSubStateOf( S.CHOOSE_STARTFIELD  ))
-			this.turn.chooseStartField(position);
+			this.turn.chooseStartField(figure, fieldId);
 	}
 
 	@Override
-	public synchronized void moveFigure(Figure figure, Position position) {
+	public synchronized void moveFigure(Figure figure, int fieldId) {
 		if (this.stateMachine.getState().isSubStateOf( S.MOVE_FIGURE  ))
-			this.turn.moveFigure(position);
+			this.turn.moveFigure(figure, fieldId);
 	}
 
-	@Override
-	public synchronized void duel(Player opponent) {
-		if (this.stateMachine.getState().isSubStateOf( S.DUEL  ))
-			this.turn.duel(opponent);
-	}
 
-	@Override
-	public synchronized void checkRemainingDicesum() {
-		if (this.stateMachine.getState().isSubStateOf( S.CHECK_REMAINING_DICESUM  ))
-			this.turn.checkRemainingDicesum();
-	}
 }
