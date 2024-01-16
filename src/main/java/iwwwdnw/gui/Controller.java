@@ -37,6 +37,7 @@ public class Controller implements Observer {
 	}
 
 	public void doit() {
+		this.currentPlayer = this.myModel.getGame().getCurrentPlayer();
 		Scanner scanner = new Scanner(System.in);
 		if (this.stateMachine.getState().equals(S.START_TURN)) {
 			this.myModel.sysop();

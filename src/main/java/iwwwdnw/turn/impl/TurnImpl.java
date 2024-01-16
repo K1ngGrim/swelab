@@ -22,10 +22,15 @@ public class TurnImpl {
 	}
 
 	public void rollDice(Player player) {
+		if(this.tries == 0){
+			this.tries = 3;
+			domain.getGame().nextPlayer();
+			stateMachine.setState(State.S.START_TURN);
+			return;
+		}
 		int dice1 = (int) (Math.random() * 6) + 1;
 		int dice2 = (int) (Math.random() * 6) + 1;
 		this.remainingDiceSum = dice1 + dice2;
-
 
 		int countFiguresHome = 0;
 
@@ -35,12 +40,14 @@ public class TurnImpl {
 
 		if (remainingDiceSum != 7){
 			if(countFiguresHome == 5){
-				//TODO: Wie Anzahl Tries behandeln?
+				tries -- ;
+				stateMachine.setState(State.S.ROLL_DICE);
+
 			}else{
 				stateMachine.setState(State.S.MOVE_FIGURE);
 			}
 		}else{
-				stateMachine.setState(State.S.CHOOSE_STARTFIELD);
+			stateMachine.setState(State.S.CHOOSE_STARTFIELD);
 		}
 
 
