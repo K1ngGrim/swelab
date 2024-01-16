@@ -13,6 +13,8 @@ public interface Player {
 	Set<Figure> allFigures();
 	
 	Field[] startFields();
+
+	int[] getFreeStartFields();
 	
 
 }

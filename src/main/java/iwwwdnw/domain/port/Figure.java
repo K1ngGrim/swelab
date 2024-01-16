@@ -8,6 +8,8 @@ public interface Figure {
 	Field getField();
 	
 	String getColor();
+
+	void setField(Field field);
 	
 
 }

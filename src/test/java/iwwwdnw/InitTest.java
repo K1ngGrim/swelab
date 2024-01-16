@@ -1,5 +1,6 @@
 package iwwwdnw;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ class InitTest {
 
 		List<Player> players = game.allPlayers();
 		Assertions.assertEquals(3, players.size());
-		Set<Field> fields = game.getBoard();
+		ArrayList<Field> fields = game.getBoard();
 		Assertions.assertTrue(fields.size() > 0);
 		for (Field field : fields) {
 			Assertions.assertNotNull(field.succ());

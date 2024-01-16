@@ -7,7 +7,6 @@ import iwwwdnw.domain.port.Field;
 import iwwwdnw.domain.port.Figure;
 
 public class FieldImpl implements Field {
-
 	private boolean isSartField;
 	private boolean isJoinField;
 	private int id;
@@ -16,13 +15,13 @@ public class FieldImpl implements Field {
 	private FieldImpl predecessor;
 	private FieldImpl neighbor;
 	
-	private Set<FigureImpl> figuresOnField = new HashSet<>();
+	private HashSet<FigureImpl> figuresOnField = new HashSet<>();
 	
 	public FieldImpl(FieldImpl lastField, boolean isStartField, boolean isJoinField) {
 		this.isSartField = isStartField;
 		this.isJoinField = isJoinField;
 		this.predecessor = lastField;
-		if (lastField != null)
+		if (lastField != null && lastField.successor == null )
 			lastField.successor = this;
 	}
 
@@ -30,7 +29,14 @@ public class FieldImpl implements Field {
 	public int getId() {
 		return this.id;
 	}
-	
+
+	@Override
+	public void addFigureToField(FigureImpl figure){
+		this.figuresOnField.add(figure);
+	}
+
+	@Override
+	public void removeFigureFromField(FigureImpl figure){ this.figuresOnField.remove(figure);}
 	public void setId(int id) {
 		this.id = id;
 	}

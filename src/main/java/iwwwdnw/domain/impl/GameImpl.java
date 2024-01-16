@@ -35,8 +35,8 @@ public class GameImpl implements Game {
 	}
 
 	@Override
-	public Set<Field> getBoard() {
-		return new HashSet<>(this.allFields);
+	public ArrayList<Field> getBoard() {
+		return new ArrayList<>(this.allFields);
 	}
 
 

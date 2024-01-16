@@ -10,6 +10,8 @@ public interface ITurn {
 
 	public Game getGame();
 
+	void duel(Player currentplayer, Player opponent, int fieldId);
+
 	public void rollDice(Player currentPlayer);
 
 	public void chooseStartField(Player currentPlayer, int fieldId);

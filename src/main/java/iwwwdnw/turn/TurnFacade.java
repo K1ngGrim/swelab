@@ -1,7 +1,5 @@
 package iwwwdnw.turn;
 
-import iwwwdnw.domain.DomainFactory;
-import iwwwdnw.domain.port.Domain;
 import iwwwdnw.domain.port.Figure;
 import iwwwdnw.domain.port.Game;
 import iwwwdnw.domain.port.Player;
@@ -29,6 +27,12 @@ public class TurnFacade implements TurnFactory, ITurn {
 	public synchronized void sysop() {
 		if (this.stateMachine.getState().isSubStateOf( S.MAKE_A_TURN /* choose right state*/ ))
 			this.turn.sysop();
+	}
+
+	@Override
+	public synchronized void duel(Player currentplayer, Player opponent, int fieldId){
+		if (this.stateMachine.getState().isSubStateOf( S.DUEL ))
+			this.turn.duel(currentplayer, opponent, fieldId);
 	}
 
 	@Override

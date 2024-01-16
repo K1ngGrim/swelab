@@ -1,5 +1,7 @@
 package iwwwdnw.domain.port;
 
+import iwwwdnw.domain.impl.FigureImpl;
+
 import java.util.Set;
 
 public interface Field {
@@ -7,7 +9,11 @@ public interface Field {
 	/* Each field has a unique id. */
 	
 	int getId();
-	
+
+	void addFigureToField(FigureImpl figure);
+
+	void removeFigureFromField(FigureImpl figure);
+
 	boolean isStartField(); // One of the two starting fields
 	boolean isJoinField(); // Bridges
 	
