@@ -17,7 +17,7 @@ public class GameImpl implements Game {
 	private List<FieldImpl> allFields;
 
 	private int currentPlayerIndex;
-	
+
 	public GameImpl(PlayerImpl[] players, List<FieldImpl> fields) {
 		this.sortedPlayers = Arrays.asList(players);
 		this.allFields = fields;

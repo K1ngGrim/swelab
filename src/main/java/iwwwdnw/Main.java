@@ -15,7 +15,7 @@ public class Main {
 		DomainFactory.FACTORY.domain().init(); 
 		StateMachineFactory.FACTORY.stateMachine().setState(S.START_TURN);
 		Subject subject = StateMachineFactory.FACTORY.subject();
-		(new View(TurnFactory.FACTORY.turn(),subject)).startEventLoop();
+		(new View(TurnFactory.FACTORY.turn(), subject)).startEventLoop();
 		
 	}
 
