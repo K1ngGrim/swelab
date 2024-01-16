@@ -1,10 +1,10 @@
 package iwwwdnw.turn;
 
 import iwwwdnw.domain.DomainFactory;
-import iwwwdnw.domain.port.Field;
+import iwwwdnw.domain.port.Domain;
 import iwwwdnw.domain.port.Figure;
+import iwwwdnw.domain.port.Game;
 import iwwwdnw.domain.port.Player;
-import iwwwdnw.domain.port.Position;
 import iwwwdnw.statemachine.StateMachineFactory;
 import iwwwdnw.statemachine.port.State.S;
 import iwwwdnw.statemachine.port.StateMachine;
@@ -15,15 +15,12 @@ public class TurnFacade implements TurnFactory, ITurn {
 
 	private TurnImpl turn;
 	private StateMachine stateMachine;
-	private Player currentplayer = null;
-	private Position position = null;
-	private Player opponent = null;
 
 	@Override
 	public ITurn turn() {
 		if (this.turn == null) {
 			this.stateMachine = StateMachineFactory.FACTORY.stateMachine();
-			this.turn = new TurnImpl(stateMachine, DomainFactory.FACTORY.domain());
+			this.turn = new TurnImpl();
 		}
 		return this;
 	}
@@ -35,22 +32,28 @@ public class TurnFacade implements TurnFactory, ITurn {
 	}
 
 	@Override
-	public synchronized void rollDice(Player player) {
+	public synchronized void rollDice(Player currentPlayer) {
 		if (this.stateMachine.getState().isSubStateOf( S.ROLL_DICE  ))
-			this.turn.rollDice(currentplayer);
+			this.turn.rollDice(currentPlayer);
 	}
 
 	@Override
-	public synchronized void chooseStartField(Figure figure, int fieldId) {
+	public synchronized void chooseStartField(Player currentPlayer, int fieldId) {
 		if (this.stateMachine.getState().isSubStateOf( S.CHOOSE_STARTFIELD  ))
-			this.turn.chooseStartField(figure, fieldId);
+			this.turn.chooseStartField(currentPlayer, fieldId);
 	}
 
 	@Override
-	public synchronized void moveFigure(Figure figure, int fieldId) {
+	public synchronized void moveFigure(Player currentPlayer, Figure figure, int fieldId) {
 		if (this.stateMachine.getState().isSubStateOf( S.MOVE_FIGURE  ))
-			this.turn.moveFigure(figure, fieldId);
+			this.turn.moveFigure(currentPlayer, figure, fieldId);
 	}
 
+	@Override
+	public synchronized int getRemainingDiceSum(){
+		return this.turn.getRemainingDiceSum();
+	}
 
+	@Override
+	public synchronized Game getGame(){return this.turn.getGame();}
 }

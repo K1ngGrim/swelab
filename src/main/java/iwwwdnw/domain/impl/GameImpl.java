@@ -12,16 +12,22 @@ import iwwwdnw.domain.port.Player;
 
 public class GameImpl implements Game {
 
-	
-	
 	private List<PlayerImpl> sortedPlayers;
-	
+
 	private List<FieldImpl> allFields;
+
+	private int currentPlayerIndex;
 	
 	public GameImpl(PlayerImpl[] players, List<FieldImpl> fields) {
 		this.sortedPlayers = Arrays.asList(players);
 		this.allFields = fields;
+		this.currentPlayerIndex = 0;
 	}
+	@Override
+	public Player getCurrentPlayer() {return this.sortedPlayers.get(currentPlayerIndex);}
+
+	@Override
+	public void nextPlayer() {this.currentPlayerIndex = (this.currentPlayerIndex + 1) % 4;}
 
 	@Override
 	public List<Player> allPlayers() {

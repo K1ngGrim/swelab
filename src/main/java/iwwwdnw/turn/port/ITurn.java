@@ -1,18 +1,19 @@
 package iwwwdnw.turn.port;
 
-import iwwwdnw.domain.port.Field;
-import iwwwdnw.domain.port.Figure;
-import iwwwdnw.domain.port.Player;
-import iwwwdnw.domain.port.Position;
+import iwwwdnw.domain.port.*;
 
 public interface ITurn {
 	
 	void sysop();
 
-	public void rollDice(Player player);
+	public int getRemainingDiceSum();
 
-	public void chooseStartField(Figure figure, int fieldId);
+	public Game getGame();
 
-	public void moveFigure(Figure figure, int fieldId);
+	public void rollDice(Player currentPlayer);
+
+	public void chooseStartField(Player currentPlayer, int fieldId);
+
+	public void moveFigure(Player currentPlayer, Figure figure, int fieldId);
 
 }

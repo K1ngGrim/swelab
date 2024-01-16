@@ -20,8 +20,6 @@ public interface State {
 
 		ROLL_DICE,
 
-		AWARD_CEREMMONY,
-
 		CHOOSE_STARTFIELD,
 
 		MOVE_FIGURE,
