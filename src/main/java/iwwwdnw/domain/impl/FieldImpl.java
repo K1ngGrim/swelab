@@ -7,6 +7,7 @@ import iwwwdnw.domain.port.Field;
 import iwwwdnw.domain.port.Figure;
 
 public class FieldImpl implements Field {
+
 	private boolean isSartField;
 	private boolean isJoinField;
 	private int id;

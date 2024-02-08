@@ -29,7 +29,7 @@ public class View implements Observer {
 
 	void display() {
 		/* Display the situation as shown in your mock-up. */
-		System.out.println(String.format("Sate %s%nStituation is...", this.currentState.toString()));
+		System.out.println(String.format("State %s%nStituation is...", this.currentState.toString()));
 	}
 
 	void show(String instruction) {

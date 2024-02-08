@@ -22,6 +22,7 @@ public interface State {
 
 		CHOOSE_STARTFIELD,
 
+		CHOOSE_FIGURE_TO_MOVE,
 		MOVE_FIGURE,
 
 		DUEL;
